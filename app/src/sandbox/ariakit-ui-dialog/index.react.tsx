@@ -91,7 +91,7 @@ interface DialogCloseButtonProps {
 // that is present but undefined.
 // https://github.com/ariakit/ariakit/pull/7465#discussion_r3992662589
 function DialogCloseButton({ label }: DialogCloseButtonProps) {
-  return <DialogDismiss aria-label={label} />;
+  return <DialogDismiss aria-label={label}>{false}</DialogDismiss>;
 }
 
 export default function DialogExamples() {
@@ -359,15 +359,11 @@ export default function DialogExamples() {
         </DialogProvider>
       </Example>
 
-      {/*
-        Regression fixtures: an icon-only dismiss whose label prop is present
-        but undefined.
-      */}
       <Example
         title="Dismiss with an optional label"
         description="A wrapper passes its optional label on to the dismiss. Without a label, the dismiss keeps its default name."
         code={`
-          <DialogDismiss aria-label={label} />
+          <DialogDismiss aria-label={label}>{false}</DialogDismiss>
         `}
       >
         <DialogProvider>

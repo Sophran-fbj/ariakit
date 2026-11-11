@@ -41,7 +41,7 @@ interface PopoverCloseButtonProps {
 // that is present but undefined.
 // https://github.com/ariakit/ariakit/pull/7465#discussion_r3992662589
 function PopoverCloseButton({ label }: PopoverCloseButtonProps) {
-  return <PopoverDismiss aria-label={label} />;
+  return <PopoverDismiss aria-label={label}>{null}</PopoverDismiss>;
 }
 
 export default function PopoverExamples() {
@@ -434,15 +434,11 @@ export default function PopoverExamples() {
         </div>
       </Example>
 
-      {/*
-        Regression fixtures: an icon-only dismiss whose label prop is present
-        but undefined.
-      */}
       <Example
         title="Dismiss with an optional label"
         description="A wrapper passes its optional label on to the dismiss. Without a label, the dismiss keeps its default name."
         code={`
-          <PopoverDismiss aria-label={label} />
+          <PopoverDismiss aria-label={label}>{null}</PopoverDismiss>
         `}
       >
         <ExampleStage anchor="start" height={42}>

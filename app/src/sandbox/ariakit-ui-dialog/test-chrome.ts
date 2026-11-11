@@ -107,13 +107,13 @@ withFramework(import.meta.dirname, async ({ query, test }) => {
   });
 
   // https://github.com/ariakit/ariakit/pull/7465#discussion_r3992662589
-  test("names an icon-only dismiss whose label prop is undefined", async ({
-    q,
-  }) => {
+  test("shows a named dismiss icon with false children", async ({ q }) => {
     await q.button("View messages").click();
     const dialog = q.dialog("Messages");
     await test.expect(dialog).toBeVisible();
-    await query(dialog).button("Dismiss popup").click();
+    const dismiss = query(dialog).button("Dismiss popup");
+    await test.expect(dismiss.locator("svg")).toBeVisible();
+    await dismiss.click();
     await test.expect(dialog).toBeHidden();
   });
 });

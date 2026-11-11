@@ -124,12 +124,11 @@ withFramework(import.meta.dirname, async ({ query, test }) => {
   });
 
   // https://github.com/ariakit/ariakit/pull/7465#discussion_r3992662589
-  test("names an icon-only dismiss whose label prop is undefined", async ({
-    q,
-  }) => {
+  test("shows a named dismiss icon with null children", async ({ q }) => {
     const popover = query(q.article("Dismiss with an optional label")).dialog(
       "Messages",
     );
-    await test.expect(query(popover).button("Dismiss popup")).toBeVisible();
+    const dismiss = query(popover).button("Dismiss popup");
+    await test.expect(dismiss.locator("svg")).toBeVisible();
   });
 });
